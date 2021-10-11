@@ -16,6 +16,9 @@ declare global {
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   GeneralInfo: undefined;
+  CharacterInfo: {
+    character: Character;
+  };
   NotFound: undefined;
 };
 
@@ -57,6 +60,7 @@ export interface Collection<R extends NamedResource> {
   available: number;
   collectionURI: string;
   items: R[];
+  returned: number;
 }
 export interface Comic extends NamedResource {}
 export interface Series extends NamedResource {}

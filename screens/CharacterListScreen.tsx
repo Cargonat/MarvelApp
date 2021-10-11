@@ -1,17 +1,17 @@
 import * as React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {View} from '../components/Themed';
-import {RootTabScreenProps} from '../types';
+import {Character, RootTabScreenProps} from '../types';
 import CharacterItem from "../components/CharacterItem";
 
-export default function CharacterListScreen({navigation}: RootTabScreenProps<'Characters'>) {
+export default function CharacterListScreen(navigation: RootTabScreenProps<'Characters'>) {
     return (
         <ScrollView>
             <View style={styles.container}>
                 {[...Array(15)].map((_,i) =>
                     <View key={i}>
                         {/* TODO Move key to CharacterItem based on ID */}
-                        <CharacterItem character={ironManWithCustomThumbnail}/>
+                        <CharacterItem character={ironManWithCustomThumbnail} navigation={navigation}/>
                     </View>
                 )}
             </View>
@@ -19,7 +19,7 @@ export default function CharacterListScreen({navigation}: RootTabScreenProps<'Ch
     );
 }
 
-const ironManWithCustomThumbnail = {
+const ironManWithCustomThumbnail : Character = {
     id: 1009368,
     name: "Iron Man",
     description: "Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.",

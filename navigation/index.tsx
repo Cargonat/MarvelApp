@@ -15,6 +15,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import GeneralInfoScreen from '../screens/GeneralInfoScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import CharacterListScreen from '../screens/CharacterListScreen';
+import CharacterInfoScreen from '../screens/CharacterInfoScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -41,8 +42,11 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="GeneralInfo" component={GeneralInfoScreen} />
+        <Stack.Screen name="GeneralInfo" component={GeneralInfoScreen} options={{title: 'General Information'}}/>
       </Stack.Group>
+        <Stack.Group screenOptions={{presentation: 'modal'}}>
+            <Stack.Screen name="CharacterInfo" component={CharacterInfoScreen} options={{title:'Character Information'}}/>
+        </Stack.Group>
     </Stack.Navigator>
   );
 }
