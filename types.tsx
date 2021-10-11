@@ -6,7 +6,6 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import {Image} from "react-native";
 
 declare global {
   namespace ReactNavigation {
@@ -16,7 +15,7 @@ declare global {
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: undefined;
+  GeneralInfo: undefined;
   NotFound: undefined;
 };
 
@@ -38,11 +37,14 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
 export interface Character {
   id: number;
   name: string;
-  thumbnail: Thumbnail;
   description: string;
-  comics: Comic[];
-  series: Series[];
-  events: Event[];
+  modified: string;
+  thumbnail: Thumbnail;
+  resourceURI: string;
+  comics: Collection<Comic>;
+  series: Collection<Series>;
+  stories: Collection<Story>;
+  events: Collection<Event>;
   urls: Link[];
 }
 
@@ -51,6 +53,11 @@ export interface Thumbnail {
   extension: string
 }
 
+export interface Collection<R extends NamedResource> {
+  available: number;
+  collectionURI: string;
+  items: R[];
+}
 export interface Comic extends NamedResource {}
 export interface Series extends NamedResource {}
 export interface Event extends NamedResource {}

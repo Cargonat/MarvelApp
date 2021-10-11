@@ -12,7 +12,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import ModalScreen from '../screens/ModalScreen';
+import GeneralInfoScreen from '../screens/GeneralInfoScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import CharacterListScreen from '../screens/CharacterListScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
@@ -41,7 +41,7 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen name="GeneralInfo" component={GeneralInfoScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -70,7 +70,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate('Modal')}
+              onPress={() => navigation.navigate('GeneralInfo')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>
