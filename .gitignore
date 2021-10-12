@@ -14,3 +14,6 @@ web-build/
 
 # IntelliJ IDEA
 .idea/
+
+# api keys
+apiconfig.json

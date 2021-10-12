@@ -1,7 +1,7 @@
 import React from 'react';
-import {Character, RootTabScreenProps} from "../types";
-import {Text, View} from "./Themed";
-import {Image, Pressable, StyleSheet} from "react-native";
+import {Character, RootTabScreenProps} from '../types';
+import {Text, View} from './Themed';
+import {Image, Pressable, StyleSheet} from 'react-native';
 
 interface Props {
     character: Character;
@@ -11,12 +11,12 @@ interface Props {
 export default function CharacterItem({character, navigation}: Props) {
     return (
         <Pressable
-            onPress={() => navigation.navigation.navigate('CharacterInfo', {character, navigation})}
+            onPress={() => navigation.navigation.navigate('CharacterInfo', {character})}
             style={({pressed}) => ({opacity: pressed ? 0.5 : 1,})}>
             <View style={styles.itemContainer}>
                 <Image
-                    source={{uri: character.thumbnail.path}}
-                    style={{width: 60, height: 60}}
+                    source={{uri: character.thumbnail.path+"/portrait_small." + character.thumbnail.extension}}
+                    style={{width: 50, height: 75}}
                 />
                 <View style={styles.textContainer}>
                     <Text style={styles.name}>
@@ -33,18 +33,18 @@ export default function CharacterItem({character, navigation}: Props) {
 const styles = StyleSheet.create({
     itemContainer: {
         flex: 1,
-        flexDirection: "row",
+        flexDirection: 'row',
         padding: 5,
     },
     textContainer: {
         flex: 1,
-        flexDirection: "column",
+        flexDirection: 'column',
         paddingHorizontal: 5,
     },
     name: {
         fontSize: 20,
     },
     description: {
-        color: "grey"
+        color: 'grey'
     }
 });

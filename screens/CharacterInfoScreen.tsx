@@ -7,12 +7,12 @@ export default function CharacterInfoScreen({route}: RootStackScreenProps<'Chara
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text>
+                <Text style={styles.title}>
                     {route.params.character.name}
                 </Text>
                 <Image
-                    source={{uri: route.params.character.thumbnail.path}}
-                    style={{width: 60, height: 60}}
+                    source={{uri: route.params.character.thumbnail.path + "/standard_fantastic." + route.params.character.thumbnail.extension}}
+                    style={{width: 250, height: 250}}
                 />
                 <Text>
                     {route.params.character.description}
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'center',
+        alignItems: 'center',
     },
     title: {
         fontSize: 20,
